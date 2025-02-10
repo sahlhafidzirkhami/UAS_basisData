@@ -1,5 +1,5 @@
 <?php
-include 'koneksi.php';
+include '../../koneksi.php';
 
 $cabang = null; // Inisialisasi variabel untuk mencegah error
 

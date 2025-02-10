@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <h1 class="text-3xl font-bold text-center mb-8">Tambah Pegawai</h1>
 
         <!-- Form Tambah Data -->
-        <form action="tambah.php" method="POST" class="bg-white shadow-md rounded-lg p-6 max-w-lg mx-auto">
+        <form action="tambah_pegawai.php" method="POST" class="bg-white shadow-md rounded-lg p-6 max-w-lg mx-auto">
             <div class="mb-4">
                 <label for="nama" class="block text-gray-700">Nama</label>
                 <input type="text" name="nama" id="nama" class="w-full px-4 py-2 border rounded-lg" required>

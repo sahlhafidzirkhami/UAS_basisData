@@ -11,6 +11,33 @@ if (isset($_GET['id'])) {
     $result = mysqli_query($koneksi, $query);
     $pegawai = mysqli_fetch_assoc($result);
 }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id_pegawai = $_POST['id_pegawai'];
+    $nama = $_POST['nama'];
+    $alamat = $_POST['alamat'];
+    $tanggal_lahir = $_POST['tanggal_lahir'];
+    $jenis_kelamin = $_POST['jenis_kelamin'];
+    $id_jabatan = $_POST['id_jabatan'];
+    $id_cabang = $_POST['id_cabang'];
+
+    // Query untuk update data pegawai
+    $query = "UPDATE pegawai SET 
+                nama = '$nama',
+                alamat = '$alamat',
+                tanggal_lahir = '$tanggal_lahir',
+                jenis_kelamin = '$jenis_kelamin',
+                id_jabatan = '$id_jabatan',
+                id_cabang = '$id_cabang'
+              WHERE id_pegawai = '$id_pegawai'";
+
+    if (mysqli_query($koneksi, $query)) {
+        echo "<script>alert('Data pegawai berhasil diperbarui'); window.location='index.php';</script>";
+    } else {
+        echo "<script>alert('Gagal memperbarui data'); window.location='edit.php?id=$id_pegawai';</script>";
+    }
+}
+
+
 
 // Ambil daftar jabatan
 $query_jabatan = "SELECT * FROM jabatan";
@@ -33,7 +60,7 @@ $result_cabang = mysqli_query($koneksi, $query_cabang);
     <div class="container mx-auto p-4">
         <h1 class="text-3xl font-bold text-center mb-8">Edit Pegawai</h1>
 
-        <form action="proses_edit.php" method="POST" class="bg-white p-6 rounded-lg shadow-md">
+        <form action="edit.php" method="POST" class="bg-white p-6 rounded-lg shadow-md">
             <input type="hidden" name="id_pegawai" value="<?= $pegawai['id_pegawai'] ?>">
 
             <label class="block text-sm font-medium text-gray-700">Nama</label>

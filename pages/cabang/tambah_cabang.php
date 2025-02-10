@@ -1,6 +1,6 @@
 <?php
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
-    include 'koneksi.php';
+    include '../../koneksi.php';
 
     $nama_cabang = $_POST['nama_cabang'];
     $alamat_cabang = $_POST['alamat_cabang'];
